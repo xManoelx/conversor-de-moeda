@@ -10,6 +10,7 @@ const footer = document.querySelector("main footer")
 const amount = document.getElementById("amount")
 const currency = document.getElementById("currency")
 const description = document.getElementById("description")
+const result = document.getElementById("result")
 
 const hasCaractersRegex = /\D+/g //expressão para encontrar caracteres
     
@@ -24,13 +25,13 @@ form.onsubmit = (event) => {
     event.preventDefault()
     
     switch(currency.value){
-        case "USD":
+        case "USD": //Se for Dolar
             convertCurrency(amount.value, USD, "US$")
             break
-        case "EUR":
+        case "EUR": //Se for Euro
             convertCurrency(amount.value, EUR, "€")
             break    
-        case "GBP":
+        case "GBP": //Se for Libra
             convertCurrency(amount.value, GBP, "£")
             break     
     }
@@ -42,6 +43,13 @@ function convertCurrency(amount, price, symbol){
         //Exibindo a cotação da moeda selecionada
         description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
         
+        //Calcula o resultado total
+        let total = (amount * price)
+        total = formatCurrencyBRL(total)
+
+        //Exibe o resultado total
+        result.textContent = `${total}`
+
         //Aplica a classe que exibe o valor da conversão
         footer.classList.add("show-result")
     } 
