@@ -37,12 +37,15 @@ form.onsubmit = (event) => {
 
 //Função para converter a moeda
 function convertCurrency(amount, price, symbol){
+    //Aplica a classe que exibe o valor da conversão
     try {
-        footer.classList.add
-        
+        footer.classList.add("show-result")
     } 
     
     catch (error) {
+        //Esconde a classe que exibe o valor da conversão
+        footer.classList.remove("show-result")
+        
         console.log(error)
         alert("Não foi possível converter. Tente novamente mais tarde.")
     }
